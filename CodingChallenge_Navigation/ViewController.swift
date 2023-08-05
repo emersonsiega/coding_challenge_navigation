@@ -46,13 +46,36 @@ extension ViewController: UITableViewDataSource {
 }
 
 extension ViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView,
-                   didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath,
-                              animated: true)
-        let cityName = cities[indexPath.row]
-        let countryName = cityCountryDictionary[cityName] ?? ""
-        print("city = \(cityName), country = \(countryName)")
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    
+        if tableView.isLastRow(indexPath) {
+            performSegue(withIdentifier: "showCityDetails", sender: self)
+            return
+        }
         
+        let modalController = UIViewController()
+        
+        if indexPath.isEven() {
+            modalController.view.backgroundColor = .blue
+            present(modalController, animated: true)
+            return
+        }
+        
+        modalController.view.backgroundColor = .green
+        navigationController?.pushViewController(modalController, animated: true)
+    }
+}
+
+extension IndexPath {
+    func isEven() -> Bool {
+        return row % 2 == 0
+    }
+}
+
+extension UITableView {
+    func isLastRow(_ indexPath: IndexPath) -> Bool {
+        let numberOfRows = numberOfRows(inSection: numberOfSections - 1) - 1
+        return indexPath.row == numberOfRows
     }
 }

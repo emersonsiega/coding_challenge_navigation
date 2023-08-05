@@ -13,3 +13,7 @@ Swift course navigation coding challenge
 4. If the selected cells's indexPath.row is an odd number (i.e. the indexPath.row is not divisible by 2), then you will need to navigate to a view controller with a green background. The navigation should be done using navigation stack by pushing the new view controller.
 
 5. **(bonus)** However if the selected cell is the last cell in the table view, then you will need to navigate using segue (i.e. performSegue). You can set up the segue in the Main.storyboard for the project. You will need to add a new view controller from the library (by tapping on + button in Interface Builder). After you added a new view controller from library, you will need to connect current view controller showing cities table view to the new view controller using segue connection. The segue connection then should be assigned a name of your preference. Afterwards, you can use that name with performSegue function from your ViewController when user taps on the last cell of the table view. Also, please make sure to embed your ViewController that shows table view inside Navigation Controller stack like it was shown in the previous lectures.
+
+## Result
+
+![](result.gif)
